@@ -1,0 +1,1826 @@
+{
+	"info": {
+		"_postman_id": "8c3d9d61-6293-4a37-8913-a9b29174fa21",
+		"name": "Academy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32450105"
+	},
+	"item": [
+		{
+			"name": "1_Login",
+			"item": [
+				{
+					"name": "LoginToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/validateToken",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"validateToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginAdmin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"Token\", pm.response.json().token);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mail\": \"{{Email}}\",\r\n  \"password\": \"{{Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"Token\", pm.response.json().token);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"Ari_Zulauf@gmail.com\",\r\n    \"password\": \"1234@Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2_User",
+			"item": [
+				{
+					"name": "Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMGExYWFlOTI2MzM2YzE1NzlhZDUiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRCMU5qck0wbnBaTmlPRm94aWxyN3VlSVhURU9reHo2NkNibS5Va1RBN21iYUw3YTd2WjF2RyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDIwLzEwLzIwMjMsIDIwOjE1OjM3IEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjUzMzBhMWFhZTkyNjMzNmMxNTc5YWQ2In1dLCJfX3YiOjAsImlhdCI6MTcxNjc1Mjc4NywiZXhwIjoxNzE2ODM5MTg3fQ.9TQT0FQoOWDxmIkOpmhY7LKgBLKCYzKSR1tFSsXU2Uw"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if FullName is true\", function(){\r",
+									"\r",
+									"    pm.expect(pm.environment.get(\"FullName\")).to.eql(pm.response.json().user.fullNeme);\r",
+									"\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check if Id is true\", function(){\r",
+									"pm.expect(pm.response.json().user._id).to.exist;\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check if mail is true\", function(){\r",
+									"pm.expect(pm.response.json().user.mail).to.exist;\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check if cpf is true\", function(){\r",
+									"pm.expect(pm.response.json().user.cpf).to.exist;\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"fullName\",pm.variables.replaceIn('{{$randomFullName}}'))\r",
+									"\r",
+									"function cpfGeneretor(){\r",
+									"    let number = [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"0\"]\r",
+									" \r",
+									"    let cpf = ''\r",
+									" \r",
+									"    for (let i = 0; i < 11; i++) {\r",
+									"        cpf += number[Math.floor(Math.random() * number.length)];\r",
+									"    }\r",
+									"    return cpf\r",
+									"}\r",
+									"pm.environment.set('cpf', cpfGeneretor());\r",
+									"\r",
+									"pm.environment.set(\"mail\",pm.variables.replaceIn('{{$randomEmail}}'))\r",
+									"\r",
+									"pm.environment.set(\"password\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									"pm.environment.set(\"confirmPassword\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"{{fullName}}\",\r\n    \"mail\": \"{{mail}}\",\r\n    \"password\": \"{{Password}}\",\r\n    \"accessProfile\": \"ADMIN\",\r\n    \"cpf\": \"{{cpf}}\",\r\n    \"confirmPassword\": \"{{Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User senha letra maiúscula",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"fullName\",pm.variables.replaceIn('{{$randomFullName}}'))\r",
+									"\r",
+									"function cpfGeneretor(){\r",
+									"    let number = [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"0\"]\r",
+									" \r",
+									"    let cpf = ''\r",
+									" \r",
+									"    for (let i = 0; i < 11; i++) {\r",
+									"        cpf += number[Math.floor(Math.random() * number.length)];\r",
+									"    }\r",
+									"    return cpf\r",
+									"}\r",
+									"pm.environment.set('cpf', cpfGeneretor());\r",
+									"\r",
+									"pm.environment.set(\"mail\",pm.variables.replaceIn('{{$randomEmail}}'))\r",
+									"\r",
+									"pm.environment.set(\"password\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									"pm.environment.set(\"confirmPassword\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"{{fullName}}\",\r\n    \"mail\": \"{{mail}}\",\r\n    \"password\": \"rthuing@122333\",\r\n    \"accessProfile\": \"ADMIN\",\r\n    \"cpf\": \"{{cpf}}\",\r\n    \"confirmPassword\": \"rthuing@122333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User senha letra minúscula",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"fullName\",pm.variables.replaceIn('{{$randomFullName}}'))\r",
+									"\r",
+									"function cpfGeneretor(){\r",
+									"    let number = [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"0\"]\r",
+									" \r",
+									"    let cpf = ''\r",
+									" \r",
+									"    for (let i = 0; i < 11; i++) {\r",
+									"        cpf += number[Math.floor(Math.random() * number.length)];\r",
+									"    }\r",
+									"    return cpf\r",
+									"}\r",
+									"pm.environment.set('cpf', cpfGeneretor());\r",
+									"\r",
+									"pm.environment.set(\"mail\",pm.variables.replaceIn('{{$randomEmail}}'))\r",
+									"\r",
+									"pm.environment.set(\"password\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									"pm.environment.set(\"confirmPassword\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"{{fullName}}\",\r\n    \"mail\": \"{{mail}}\",\r\n    \"password\": \"KHGBN@12233333\",\r\n    \"accessProfile\": \"ADMIN\",\r\n    \"cpf\": \"{{cpf}}\",\r\n    \"confirmPassword\": \"KHGBN@12233333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User senha caractere especial",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"fullName\",pm.variables.replaceIn('{{$randomFullName}}'))\r",
+									"\r",
+									"function cpfGeneretor(){\r",
+									"    let number = [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"0\"]\r",
+									" \r",
+									"    let cpf = ''\r",
+									" \r",
+									"    for (let i = 0; i < 11; i++) {\r",
+									"        cpf += number[Math.floor(Math.random() * number.length)];\r",
+									"    }\r",
+									"    return cpf\r",
+									"}\r",
+									"pm.environment.set('cpf', cpfGeneretor());\r",
+									"\r",
+									"pm.environment.set(\"mail\",pm.variables.replaceIn('{{$randomEmail}}'))\r",
+									"\r",
+									"pm.environment.set(\"password\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									"pm.environment.set(\"confirmPassword\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"{{fullName}}\",\r\n    \"mail\": \"{{mail}}\",\r\n    \"password\": \"KHGBNn12233333\",\r\n    \"accessProfile\": \"ADMIN\",\r\n    \"cpf\": \"{{cpf}}\",\r\n    \"confirmPassword\": \"KHGBNn12233333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User senha numero",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"fullName\",pm.variables.replaceIn('{{$randomFullName}}'))\r",
+									"\r",
+									"function cpfGeneretor(){\r",
+									"    let number = [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"0\"]\r",
+									" \r",
+									"    let cpf = ''\r",
+									" \r",
+									"    for (let i = 0; i < 11; i++) {\r",
+									"        cpf += number[Math.floor(Math.random() * number.length)];\r",
+									"    }\r",
+									"    return cpf\r",
+									"}\r",
+									"pm.environment.set('cpf', cpfGeneretor());\r",
+									"\r",
+									"pm.environment.set(\"mail\",pm.variables.replaceIn('{{$randomEmail}}'))\r",
+									"\r",
+									"pm.environment.set(\"password\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									"pm.environment.set(\"confirmPassword\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"{{fullName}}\",\r\n    \"mail\": \"{{mail}}\",\r\n    \"password\": \"KHGBNn@mmopop\",\r\n    \"accessProfile\": \"ADMIN\",\r\n    \"cpf\": \"{{cpf}}\",\r\n    \"confirmPassword\": \"KHGBNn@mmopop\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User campo nome vazio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"fullName\",pm.variables.replaceIn('{{$randomFullName}}'))\r",
+									"\r",
+									"function cpfGeneretor(){\r",
+									"    let number = [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"0\"]\r",
+									" \r",
+									"    let cpf = ''\r",
+									" \r",
+									"    for (let i = 0; i < 11; i++) {\r",
+									"        cpf += number[Math.floor(Math.random() * number.length)];\r",
+									"    }\r",
+									"    return cpf\r",
+									"}\r",
+									"pm.environment.set('cpf', cpfGeneretor());\r",
+									"\r",
+									"pm.environment.set(\"mail\",pm.variables.replaceIn('{{$randomEmail}}'))\r",
+									"\r",
+									"pm.environment.set(\"password\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									"pm.environment.set(\"confirmPassword\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"\",\r\n    \"mail\": \"{{mail}}\",\r\n    \"password\": \"{{Password}}\",\r\n    \"accessProfile\": \"ADMIN\",\r\n    \"cpf\": \"{{cpf}}\",\r\n    \"confirmPassword\": \"{{Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User campo email vazio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"fullName\",pm.variables.replaceIn('{{$randomFullName}}'))\r",
+									"\r",
+									"function cpfGeneretor(){\r",
+									"    let number = [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"0\"]\r",
+									" \r",
+									"    let cpf = ''\r",
+									" \r",
+									"    for (let i = 0; i < 11; i++) {\r",
+									"        cpf += number[Math.floor(Math.random() * number.length)];\r",
+									"    }\r",
+									"    return cpf\r",
+									"}\r",
+									"pm.environment.set('cpf', cpfGeneretor());\r",
+									"\r",
+									"pm.environment.set(\"mail\",pm.variables.replaceIn('{{$randomEmail}}'))\r",
+									"\r",
+									"pm.environment.set(\"password\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									"pm.environment.set(\"confirmPassword\",pm.variables.replaceIn('{{$randompasswordl}}'))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"{{fullName}}\",\r\n    \"mail\": \"\",\r\n    \"password\": \"{{Password}}\",\r\n    \"accessProfile\": \"ADMIN\",\r\n    \"cpf\": \"{{cpf}}\",\r\n    \"confirmPassword\": \"{{Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/count/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"count",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/{{Id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"{{Id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID Incorreto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/66986b5ed34f1494a0c090e1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"66986b5ed34f1494a0c090e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterarUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Lucy Rosa\",\r\n    \"mail\": \"lucyrosa@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/{{Id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"{{Id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AlterarPassword",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"Bn@456789452\",\r\n    \"confirmPassword\": \"Bn@456789452\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/password/{{Id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"password",
+								"{{Id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfirmarStatus",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/status/{{Id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"status",
+								"{{Id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"msg\": \"Usuário deletado com sucesso!.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/{{Id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"{{Id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Companys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/company/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creat Company",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"corporateName)\",pm.variables.replaceIn('{{$randomNamel}}'))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corporateName\": \"{{corporateName}}\",\r\n  \"registerCompany\": \"21234567800002\",\r\n  \"mail\": \"{{mail}}\",\r\n  \"matriz\": \"Testei\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"55119303480489\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/company/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creat Company com 101 caractere",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"corporateName)\",pm.variables.replaceIn('{{$randomNamel}}'))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corporateName\": \"mnbvcxzasdfghjklpoiuytrewqasdfghjklçmnbvcxzasdfghjjklçpoiuytrewqasdfghjklçmnbvcxzasdfghjklçpoiukloiuy\",\r\n  \"registerCompany\": \"21234567800002\",\r\n  \"mail\": \"{{mail}}\",\r\n  \"matriz\": \"Testei\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"55119303480489\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/company/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count company",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/company/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "656b6f642c38c3c07eec479f"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/company/6678191191fef6d88d1edf60",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"6678191191fef6d88d1edf60"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Board",
+			"item": [
+				{
+					"name": "List Board",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/board",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creat Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"boardName\": \"camponesa\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/board",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creat Board campo vazio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"boardName\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/board",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creat Board maximo 50 caractere",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"boardName\": \"loiuytrewasdfghjklmnbvcxzaqwertyuioplkjhgfdsazxcvbm\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/board",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creat Board caracteres especiais",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"boardName\": \"Flor&\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/board",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creat Board caracteres especiais diferentes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"boardName\": \"cactoK.\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/board",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count Board",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/board/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Board ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/board/65971e90ca5ea3348ab21a10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board",
+								"65971e90ca5ea3348ab21a10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar BoardName",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"boardName\": \"Gatilhu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/board/667d625091fef6d88d212505",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board",
+								"667d625091fef6d88d212505"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CostCenter",
+			"item": [
+				{
+					"name": "ListCostCenter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/CostCenter/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"CostCenter",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreatCostCenter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"costCenterName\":\"bandeirinha\",\r\n    \"boardId\":\"{{boardid}}\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/costCenter/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"costCenter",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count Custo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/CostCenter/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"CostCenter",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CostCenterID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Id",
+								"value": "65735b1d4c4ce0f0d9af08be"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/CostCenter/66781f4a91fef6d88d1ee956",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"CostCenter",
+								"66781f4a91fef6d88d1ee956"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar CostCenter",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"costCenterName\": \"Computador\",\r\n  \"boardId\": \"6679d63291fef6d88d202c9d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/costCenter/6679d69b91fef6d88d203294",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"costCenter",
+								"6679d69b91fef6d88d203294"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Department",
+			"item": [
+				{
+					"name": "ListDepartment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/department/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"department",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreatDepartment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"departmentName\":\"Guerra dos dragoes\",\r\n    \"costCenterId\":\"{{CostCenterid}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/department/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"department",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AlterarDepartamento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"departmentName\":\"computadora\",\r\n    \"costCenterId\":\"{{CostCenterid}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/department/668437343d0b07c56e2126a1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"department",
+								"668437343d0b07c56e2126a1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InativandoDepartamento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"departmentName\":\"computadora\",\r\n    \"costCenterId\":\"{{CostCenterid}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/department/status/668437343d0b07c56e2126a1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"department",
+								"status",
+								"668437343d0b07c56e2126a1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "StatusDepartamento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/department/status/6684481d3d0b07c56e214405",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"department",
+								"status",
+								"6684481d3d0b07c56e214405"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CountDepartment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/department/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"department",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DepartmentID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/department/?Id=656a392b10bf201c7a74e5b9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"department",
+								""
+							],
+							"query": [
+								{
+									"key": "Id",
+									"value": "656a392b10bf201c7a74e5b9"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "ListCliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/client/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreatCliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Nair Leite\",\r\n    \"birthDate\": \"24082023\",\r\n    \"mail\": \"nana177@gmail.com\",\r\n    \"phone\": \"5591777596530\",\r\n    \"currentRole\": \"ADMIN\",\r\n    \"documents\": [\r\n        {\r\n            \"rg\": \"6306741\",\r\n            \"cpf\": \"00070880037\"\r\n        }\r\n    ],\r\n    \"address\": [\r\n        {\r\n            \"country\": \"Brasil\",\r\n            \"zipCode\": \"61025639\",\r\n            \"city\": \"Belém\",\r\n            \"state\": \"PA\",\r\n            \"district\": \"São Brás\",\r\n            \"street\": \"Rua 3 de Maio\",\r\n            \"number\": \"27\",\r\n            \"complement\": \"Hospital do Coração\"\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/client/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CountCliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/client/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ClienteID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/client/6678263191fef6d88d1eee61",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"6678263191fef6d88d1eee61"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AlterarCliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Nair Leite\",\r\n    \"birthDate\": \"24082023\",\r\n    \"mail\": \"nana177@gmail.com\",\r\n    \"phone\": \"5591777596530\",\r\n    \"currentRole\": \"ADMIN\",\r\n    \"documents\": [\r\n        {\r\n            \"rg\": \"6306741\",\r\n            \"cpf\": \"00070880037\"\r\n        }\r\n    ],\r\n    \"address\": [\r\n        {\r\n            \"country\": \"Brasil\",\r\n            \"zipCode\": \"61025639\",\r\n            \"city\": \"Belém\",\r\n            \"state\": \"PA\",\r\n            \"district\": \"São Brás\",\r\n            \"street\": \"Rua 3 de Maio\",\r\n            \"number\": \"27\",\r\n            \"complement\": \"Hospital do Coração\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/client/6678299491fef6d88d1eef5e",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"6678299491fef6d88d1eef5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"msg\": \"Client deletado com sucesso!.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/client/6678263191fef6d88d1eee61",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"6678263191fef6d88d1eee61"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{Token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Token",
+			"value": ""
+		}
+	]
+}
